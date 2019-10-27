@@ -1,0 +1,2 @@
+{"level":"info","ts":"2019-10-26T06:25:37.113Z","msg":"Instantiation","deviceInfo":"a6641f3434b3","caller":"main.main:374"}
+{"level":"error","ts":"2019-10-26T06:25:38.120Z","msg":"Failed-to-Instantiate","deviceInfo":"a6641f3434b3","caller":"main.main:380","stacktrace":"/log:33"}
