@@ -58,16 +58,16 @@ func readJSONFile(fileName string, filePath string, level LgLevel) {
 		
 		if (level.err == true && "error" == ld.Loglevel) || (level.debug == true && "debug" == ld.Loglevel) || (level.info == true && "info" == ld.Loglevel) || (level.warn == true && "warn" == ld.Loglevel) {
 
-			if ld.DevInfo != "" && ld.StackTrace == "" {
+			if ld.DevInfo != "" && ld.StackTrace == "" && strings.Contains(ld.Msg.pattern) {
 				t.AppendRow(table.Row{ld.Loglevel, ld.TimeStamp, ld.Msg, ld.Caller, string(ld.DevInfo)})
 			}
-			if ld.StackTrace != "" && ld.DevInfo == "" {
+			if ld.StackTrace != "" && ld.DevInfo == "" && strings.Contains(ld.Msg.pattern) {
 				t.AppendRow(table.Row{ld.Loglevel, ld.TimeStamp, ld.Msg, ld.Caller, "", string(ld.StackTrace)})
 			}
-			if ld.StackTrace != "" && ld.DevInfo != "" {
+			if ld.StackTrace != "" && ld.DevInfo != "" && strings.Contains(ld.Msg.pattern) {
 				t.AppendRow(table.Row{ld.Loglevel, ld.TimeStamp, ld.Msg, ld.Caller, string(ld.DevInfo), string(ld.StackTrace)})
 			}
-			if ld.DevInfo == "" && ld.StackTrace == "" {
+			if ld.DevInfo == "" && ld.StackTrace == "" && strings.Contains(ld.Msg.pattern) {
 				t.AppendRow(table.Row{ld.Loglevel, ld.TimeStamp, ld.Msg, ld.Caller})
 			}
 		}
@@ -92,6 +92,7 @@ func main() {
 	fmt.Println("Starting-Analysig-JSON-file", )
 	fileName := "sample.json"
 	filePath := "/home/demo/"
+	pattern := ""
 	level := LgLevel{
 		err:   true,
 		info:  true,
