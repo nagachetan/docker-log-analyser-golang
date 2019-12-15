@@ -25,7 +25,7 @@ type LgLevel struct {
 	debug bool
 }
 
-func readJSONFile(fileName string, filePath string, level LgLevel) {
+func readJSONFile(fileName string, filePath string, level LgLevel, pattern string) {
 	// File Reader
 	file, err := os.Open(filePath + fileName)
 
@@ -99,6 +99,6 @@ func main() {
 		warn:  false,
 		debug: true,
 	}
-	readJSONFile(fileName, filePath, level)
+	readJSONFile(fileName, filePath, level, pattern)
 }
 
