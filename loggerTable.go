@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"strings"
 	"encoding/json"
 	"fmt"
 	"github.com/jedib0t/go-pretty/table"
